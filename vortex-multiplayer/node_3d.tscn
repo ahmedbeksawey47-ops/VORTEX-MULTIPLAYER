@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://decwaklh4dxex"]
+
+[ext_resource type="Script" uid="uid://c4m26rxtcnq86" path="res://character_body_3d.gd" id="1_noarx"]
+[ext_resource type="Texture2D" uid="uid://dsr1w7kvfxe47" path="res://images.jpg" id="2_noarx"]
+
+[sub_resource type="GDScript" id="GDScript_a202f"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ql73s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbpe3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yn0l0"]
+material = SubResource("StandardMaterial3D_mbpe3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1f2jm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ql73s"]
+albedo_color = Color(0, 1, 0, 1)
+albedo_texture = ExtResource("2_noarx")
+
+[sub_resource type="BoxMesh" id="BoxMesh_v0s4m"]
+material = SubResource("StandardMaterial3D_ql73s")
+size = Vector3(5000, 0.5, 5000)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_noarx"]
+size = Vector3(5000, 0.5, 5000)
+
+[sub_resource type="Sky" id="Sky_noarx"]
+
+[sub_resource type="Environment" id="Environment_a202f"]
+sky = SubResource("Sky_noarx")
+
+[sub_resource type="BoxMesh" id="BoxMesh_oeq8l"]
+size = Vector3(1, 3, 1)
+
+[node name="Node3D" type="Node3D" unique_id=827790905]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=178604481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("1_noarx")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=386051997]
+script = SubResource("GDScript_a202f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=205813975]
+shape = SubResource("CapsuleShape3D_ql73s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1337072581]
+mesh = SubResource("BoxMesh_yn0l0")
+surface_material_override/0 = SubResource("StandardMaterial3D_1f2jm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1444120326]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=934009153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0019404888, -0.011566162)
+mesh = SubResource("BoxMesh_v0s4m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=75370689]
+shape = SubResource("BoxShape3D_noarx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=505551737]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=205344202]
+environment = SubResource("Environment_a202f")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1304895376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7546387, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=1418827243]
+transform = Transform3D(1, -2.6762785e-07, 0, 2.6762785e-07, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("BoxMesh_oeq8l")
